@@ -21,7 +21,7 @@ const Header=()=>{
     )
 }
 
-const jsonn=[
+const reslist=[
     {
         "type": "restaurant",
         "info": {
@@ -1774,7 +1774,7 @@ const jsonn=[
     }
 ]
     
-console.log(jsonn.info);
+console.log(reslist.info);
 
 
 
@@ -1787,20 +1787,43 @@ const RestaurantCard=(props)=>{
     const {name,resId}=resdata?.info
     return(
         
-            <div className="card">
-               <div className="card-image"> <img  className="cardimg"src={resdata.info.image.url}/></div>
+            // <div className="card">
+            //    <div className="card-image"> <img  className="cardimg"src={resdata.info.image.url}/></div>
                
-               <div className="heading"> 
-                   <div className="author"> <h3>
-                    {name}
-                   </h3>
-                    <div className="subheading">
-                      <h4>{resId}</h4>
-                      <h4> North indian,asian</h4>
-                    </div>
-                    </div>
+            //    <div className="heading"> 
+            //        <div className="author"> <h3>
+            //         {name}
+            //        </h3>
+            //         <div className="subheading">
+            //           <h4>{resId}</h4>
+            //           <h4> North indian,asian</h4>
+            //         </div>
+            //         </div>
+            //    </div>
+            // </div>
+
+  
+
+         <div className="card">
+            <div className="card__image">
+               <img src={resdata.info.image.url} alt="Salad" />
+            </div>
+            <div className="card__info">
+               <div className="car__info--title">
+                  <h3>{name}</h3>
+                  <p>{resdata.info.cuisine.name}</p>
+               </div>
+               <div class="card__info--price">
+                  <p>{resId}</p>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
                </div>
             </div>
+         </div>
+       
         
     )
 }
@@ -1812,7 +1835,7 @@ const Body=()=>{
                 <p>search</p>
             </div>
             <div className="res-container">
-                {jsonn.map((restaurant)=>(
+                {reslist.map((restaurant)=>(
                    <RestaurantCard key={restaurant.info.resId} resdata={restaurant}/>
                 ))}
             </div>
