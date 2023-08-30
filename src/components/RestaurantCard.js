@@ -18,7 +18,7 @@ const RestaurantCard=(props)=>{
                   <p>{resdata.info.cuisine.name}</p>
                </div>
                <div class="card__info--price">
-                  <p>{resId}</p>
+                  <p>{resdata.info.rating.aggregate_rating}</p>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
