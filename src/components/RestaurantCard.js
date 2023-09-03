@@ -1,7 +1,9 @@
+import { CDN_IMG_URL } from "../utils/constants";
+
 const RestaurantCard=(props)=>{
     const {resdata}=props
     //refactoring by destructuring the resdata object
-    const {name,resId}=resdata?.info
+    const { cloudinaryImageId,name, avgRating}=resdata?.info;
     return(
         
            
@@ -10,20 +12,20 @@ const RestaurantCard=(props)=>{
 
          <div className="card">
             <div className="card__image">
-               <img src={resdata.info.image.url} alt="Salad" />
+               <img src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
             </div>
             <div className="card__info">
                <div className="car__info--title">
                   <h3>{name}</h3>
-                  <p>{resdata.info.cuisine.name}</p>
+                  <p>{avgRating}</p>
                </div>
-               <div class="card__info--price">
-                  <p>{resdata.info.rating.aggregate_rating}</p>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+               <div className="card__info--price">
+                  <p> ⭐{avgRating}</p>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
                </div>
             </div>
          </div>
