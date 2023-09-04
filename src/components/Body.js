@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
     
 
 const Body=()=>{
-    const [listofrestaurant,setlistofrestaurant]=useState(reslist);
+    const [listofrestaurant,setlistofrestaurant]=useState([]);
+    const [newsearchlist,setnewsearchlist]=useState([])
+    const [searchlist,setsearchlist]=useState("");
     useEffect(()=>{
         fetchdata();
     },[])
@@ -19,7 +21,7 @@ const Body=()=>{
     const cardsWithRestaurants = json.data.cards.filter(card => 
         card?.card?.card?.gridElements?.infoWithStyle?.restaurants !== undefined
       );
-        console.log(cardsWithRestaurants);
+        
 
         const combinedRestaurants = cardsWithRestaurants.reduce((acc, card) => {
             const restaurants = card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -33,22 +35,40 @@ const Body=()=>{
           });
           
         setlistofrestaurant(uniqueArray);
+        setnewsearchlist(uniqueArray);
     }
 
     return(
         <div className="body">
+           
             <div className="filter">
-              <button onClick={()=>{  
+
+            <div className="search">
+            <input 
+             type="text"
+              value={searchlist} 
+              onChange={(e)=>setsearchlist(e.target.value)}/>
+            <button onClick={()=>{
+                const newlist=listofrestaurant.filter(
+                    (res)=>res.info.name.includes(searchlist)
+                )
+                console.log(newlist);
+                setnewsearchlist(newlist);
+            }}>
+                search
+            </button>
+            </div>
+              <button className="yoo" onClick={()=>{  
                 const filteredlist=listofrestaurant.filter(
-                    (res)=>res.info.rating.aggregate_rating>4
+                    (res)=>res.info.avgRating>4
                 );
-                console.log(filteredlist);
-                setlistofrestaurant(filteredlist)
+                
+                setnewsearchlist(filteredlist)
               }}> Button 
               </button>   
             </div>
             <div className="res-container">
-                {listofrestaurant.map((restaurant)=>(
+                {newsearchlist.map((restaurant)=>(
                    <RestaurantCard  key={restaurant.info.id}  resdata={restaurant}/>
                 ))}
             </div>
