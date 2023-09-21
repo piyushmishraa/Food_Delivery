@@ -16,16 +16,20 @@ const Restaurantmenu=()=>{
         const jsondata = await data.json();
         console.log(jsondata);
         setresinfo(jsondata.data);
+        console.log(resinfo);
+        
 
     }
-const {name,cuisines,costForTwoMessage}=resinfo?.cards[0]?.card?.card?.info;
+// const {name,cuisines,costForTwoMessage}=resinfo?.cards[0]?.card?.card?.info;
     
-    // const{itemCards}=resinfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categories[0];
+    // const{itemCards}=resinfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+    console.log(resinfo.cards[3].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.categories[0].itemCards);
 
     return(
         <div>
-            <h2>{name}</h2>
-            <p>{cuisines.join(", ")}-{costForTwoMessage}</p>
+            <h2>{resinfo?.cards[0]?.card?.card?.info?.name}</h2>
+            <p>{resinfo?.cards[0]?.card?.card?.info?.cuisines.join(", ")}-{resinfo?.cards[0]?.card?.card?.info?.costForTwoMessage}</p>
             <p>Menu</p>
             <ul>
                 <li>Burger</li>
