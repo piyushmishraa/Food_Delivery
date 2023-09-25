@@ -287,3 +287,7 @@ body {
    transform: scale(0.95);
  }
  
+ .user-card{
+  padding: 10px;
+  border: 1px solid black;
+ }
