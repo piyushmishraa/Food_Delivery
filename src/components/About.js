@@ -1,17 +1,34 @@
 import User from "./User";
 import UserClass from "./UserClass";
+import React from "react";
 
-const About=()=>{
-    return(
-        
-        <div>
+
+
+class About extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
+
+
+
+
+
+    render(){
+        return(
+
+            <div>
             <h2>This is about page</h2>
             
-     <User name={"Piyush Mishra(functional)"} location={"Ghaziabad"}/>
-     <UserClass name={"Piyush Mishra(class)"} location={"Ghaziabad(class)"}/>
+            {/* <User name={"Piyush Mishra(functional)"} location={"Ghaziabad"}/> */}
+            <UserClass name={"Piyush Mishra(class)"} location={"Ghaziabad(class)"}/>
             
-        </div>
-    )
-};
+             </div>
+            
+        )
+    }
+}
+
+
 
 export default About;
