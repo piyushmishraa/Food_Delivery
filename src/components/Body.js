@@ -1,7 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
-import reslist from "../utils/mock";
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
     
 
 const Body=()=>{
@@ -37,6 +38,12 @@ const Body=()=>{
           
         setlistofrestaurant(uniqueArray);
         setnewsearchlist(uniqueArray);
+    }
+
+    const onlinestatus=useOnlineStatus();
+
+    if (onlinestatus===false){
+      return <h1>Looks Like you are offline</h1>
     }
 
     return(
