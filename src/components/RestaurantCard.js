@@ -3,7 +3,7 @@ import { CDN_IMG_URL } from "../utils/constants";
 const RestaurantCard=(props)=>{
     const {resdata}=props
     //refactoring by destructuring the resdata object
-    const { cloudinaryImageId,name, avgRating}=resdata?.info;
+    const { cloudinaryImageId,name, avgRatingString,sla, costForTwo,cuisines,areaName}=resdata?.info;
     return(
         
            
@@ -11,27 +11,30 @@ const RestaurantCard=(props)=>{
   
 
          <div className="card">
-            <div className="card__image">
-               <img src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
-            </div>
-            <div className="card__info">
-               <div className="car__info--title">
-                  <h3>{name}</h3>
-                  <p>{avgRating}</p>
-               </div>
-               <div className="card__info--price">
-                  <p> ⭐{avgRating}</p>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-               </div>
-            </div>
-         </div>
+                
+
+                
+               
+               <img  src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
+               <h3 className="font-bold">{name}</h3>
+               <h5>{cuisines.join(", ")}</h5>
+               <h5>{areaName}</h5>
+            <span className=" flex">
+              <h4>
+              <i className="fa-solid fa-star"></i>
+                 ⭐  { avgRatingString}
+               </h4>
+              <h4>•</h4>
+               <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>
+               <h4>•</h4>
+               <h4>{costForTwo ?? '₹200 for two'}</h4>
+            </span>
+            </div> 
+            
+      
        
         
-    )
+    );
 }
 
 export default RestaurantCard
