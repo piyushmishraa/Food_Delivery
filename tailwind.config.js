@@ -16,7 +16,11 @@ module.exports = {
         },
         'customeGreen2':{
           600:'#65a30d'
+        },
+        'customeGreen3':{
+          700:'#4d7c0f'
         }
+
       },
       fontFamily:{
 

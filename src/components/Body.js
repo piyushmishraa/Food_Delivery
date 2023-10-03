@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{IsopenCard}from "./RestaurantCard";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body=()=>{
     const [listofrestaurant,setlistofrestaurant]=useState([]);
     const [newsearchlist,setnewsearchlist]=useState([])
     const [searchlist,setsearchlist]=useState("");
+    const IsopenlabelCard=IsopenCard(RestaurantCard);
+    console.log(listofrestaurant);
     useEffect(()=>{
         fetchdata();
     },[])
@@ -56,7 +58,7 @@ const Body=()=>{
              type="text"
               value={searchlist} 
               onChange={(e)=>setsearchlist(e.target.value)}
-              className="border border-solid border-black ml-96 mt-12 rounded-md w-72  " placeholder="search Restaurants"/>
+              className="border border-solid border-black ml-96 mt-12 rounded-md w-72  " placeholder="search Restaurants" />
             <button  className="ml-4 text-white bg-customeOrange-500 hover:bg-customeOrange-500/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 mr-2 mb-2"onClick={()=>{
                 const newlist=listofrestaurant.filter(
                     (res)=>res.info.name.includes(searchlist)
@@ -69,7 +71,7 @@ const Body=()=>{
             </div>
               <button className="ml-[500] mb-12  text-white bg-customeGreen-400 hover:bg-customeGreen-400/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-customeGreen2-600/80 dark:focus:ring-[#FF9119]/40 " onClick={()=>{  
                 const filteredlist=listofrestaurant.filter(
-                    (res)=>res.info.avgRating>4
+                    (res)=>res.info.avgRating>4.5
                 );
                 
                 setnewsearchlist(filteredlist)
@@ -78,7 +80,7 @@ const Body=()=>{
             </div>
             <div className="list">
                 {newsearchlist.map((restaurant)=>(
-                   <Link   key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id} style={{ color: 'black',textDecoration: 'none'}}><RestaurantCard  resdata={restaurant}/></Link>
+                   <Link   key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id} style={{ color: 'black',textDecoration: 'none'}}>{restaurant.info.isOpen? (<IsopenlabelCard resdata={restaurant}/>):(<RestaurantCard  resdata={restaurant}/>)}</Link>
                 ))}
             </div>
         </div>

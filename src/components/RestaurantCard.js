@@ -13,9 +13,12 @@ const RestaurantCard=(props)=>{
          <div className="card">
                 
 
+              <div style={{height:"230px"}}>
                 
+              <img  src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
+               </div>  
                
-               <img  src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
+               
                <h3 className="font-bold">{name}</h3>
                <h5>{cuisines.join(", ")}</h5>
                <h5>{areaName}</h5>
@@ -35,6 +38,21 @@ const RestaurantCard=(props)=>{
        
         
     );
+};
+
+// higher order component for is open label
+
+export const IsopenCard=(RestaurantCard)=>{
+   return (props)=>{
+      return(
+        <div>
+         <label className="absolute bg-customeGreen3-700 text-white m-1 p-2  rounded-xs z-10  text-xs ">Open</label>
+         <RestaurantCard {...props}/>
+        </div>
+
+
+      )
+   }
 }
 
 export default RestaurantCard

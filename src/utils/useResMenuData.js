@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { json } from "react-router-dom";
 
 const useResMenuData = (
   swiggy_menu_api_URL,
@@ -8,6 +9,7 @@ const useResMenuData = (
 ) => {
   const [restaurant, setRestaurant] = useState(null); // use useState to store restaurant data
   const [menuItems, setMenuItems] = useState([]); // use useState to store restaurant Menu Item data
+  const [categories,setcategories]=useState([]);
 
   useEffect(() => {
     getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
@@ -21,6 +23,7 @@ const useResMenuData = (
         throw new Error(err);
       } else {
         const json = await response.json();
+       
 
         // Set restaurant data
         const restaurantData =
@@ -29,6 +32,10 @@ const useResMenuData = (
             ?.find((x) => x && x.card["@type"] === RESTAURANT_TYPE_KEY)?.card
             ?.info || null;
         setRestaurant(restaurantData);
+        
+        const obj=json?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter((c)=>c.card?.card?.["@type"]===MENU_ITEM_TYPE_KEY);
+        const arr=Object.keys(obj).map((key)=>[key,obj[key]]);
+        setcategories(arr);
 
         // Set menu item data
         const menuItemsData =
@@ -49,14 +56,24 @@ const useResMenuData = (
           }
         });
         setMenuItems(uniqueMenuItems);
+        // console.log(json.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards);
+         
+      console.log(menuItems);
+
       }
     } catch (err) {
       setMenuItems([]);
       setRestaurant(null);
       console.error(err);
     }
+   
   }
-  return [restaurant, menuItems];
+
+
+
+  // const categories=menuItems?.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[0].card;
+  
+  return [restaurant, menuItems,categories];
 };
 
 export default useResMenuData;
