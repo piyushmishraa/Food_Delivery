@@ -72,7 +72,7 @@ const Restaurantmenu=()=>{
           </h3>
           {/* {categories accordian} */}
           {categories.map((category)=>(
-            <RestaurantCategory data={category}/>
+            <RestaurantCategory  data={category}/>
           ))}      
          
       </div>
