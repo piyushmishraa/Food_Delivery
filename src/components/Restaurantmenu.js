@@ -11,6 +11,7 @@ const Restaurantmenu=()=>{
     const [restaurant, setRestaurant] = useState(null); // call useState to store the api data in res
     const [menuItems, setMenuItems] = useState([]);
     const [categories,setcategories]=useState([]);
+    const [showstate,setshowstate]=useState(null);
     useEffect(() => {
       getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
     }, []);
@@ -71,8 +72,10 @@ const Restaurantmenu=()=>{
           menu
           </h3>
           {/* {categories accordian} */}
-          {categories.map((category)=>(
-            <RestaurantCategory  data={category}/>
+          {categories.map((category,index)=>(
+            <RestaurantCategory  data={category}
+            showItems={index === showstate ? true: false}
+            setshowstate={()=>{setshowstate(index)}}/>
           ))}      
          
       </div>
