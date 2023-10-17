@@ -1,8 +1,9 @@
 import RestaurantCard,{IsopenCard}from "./RestaurantCard";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
     
 
 const Body=()=>{
@@ -43,6 +44,7 @@ const Body=()=>{
     }
 
     const onlinestatus=useOnlineStatus();
+    const  {setusername,loggedInUser}=useContext(UserContext)
 
     if (onlinestatus===false){
       return <h1>Looks Like you are offline</h1>
@@ -77,6 +79,11 @@ const Body=()=>{
                 setnewsearchlist(filteredlist)
               }}> Recommended 
               </button>   
+              <div>
+              <label>User name :</label>
+              <input type="text" value={loggedInUser} className="border border-solid border-black  mt-12 rounded-md w-72 p-1 " onChange={(e)=>{setusername(e.target.value)}}></input>
+              </div>
+              
             </div>
             <div className="list">
                 {newsearchlist.map((restaurant)=>(
