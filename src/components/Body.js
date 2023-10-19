@@ -79,10 +79,7 @@ const Body=()=>{
                 setnewsearchlist(filteredlist)
               }}> Recommended 
               </button>   
-              <div>
-              <label>User name :</label>
-              <input type="text" value={loggedInUser} className="border border-solid border-black  mt-12 rounded-md w-72 p-1 " onChange={(e)=>{setusername(e.target.value)}}></input>
-              </div>
+             
               
             </div>
             <div className="list">
