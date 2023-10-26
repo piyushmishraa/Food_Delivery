@@ -11,7 +11,7 @@ const Body=()=>{
     const [newsearchlist,setnewsearchlist]=useState([])
     const [searchlist,setsearchlist]=useState("");
     const IsopenlabelCard=IsopenCard(RestaurantCard);
-    console.log(listofrestaurant);
+    
     useEffect(()=>{
         fetchdata();
     },[])

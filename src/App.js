@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Restaurantmenu from "./components/Restaurantmenu";
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore";
 
 const AppLayout=()=>{
     //authentication code(aise hi)
@@ -21,12 +23,14 @@ const AppLayout=()=>{
     },[])
 
     return(
+      <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser:username,setusername}}>
           <div className="App">
            <Header/>
            <Outlet/>
         </div>
       </UserContext.Provider>
+      </Provider>
       
     )
 }
