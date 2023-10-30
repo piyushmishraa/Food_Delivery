@@ -10,6 +10,7 @@ import Restaurantmenu from "./components/Restaurantmenu";
 import UserContext from "./utils/UserContext";
 import {Provider} from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const AppLayout=()=>{
     //authentication code(aise hi)
@@ -57,6 +58,10 @@ const appRouter=createBrowserRouter(
              {
               path:"/restaurant/:resId",
               element:<Restaurantmenu/>
+             },
+             {
+              path:"/cart",
+              element:<Cart/>
              }
             ],
           errorElement:<Error/>

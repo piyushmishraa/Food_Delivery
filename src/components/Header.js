@@ -8,9 +8,9 @@ const Header=()=>{
     const [login,setlogin]=useState("login");
     const {loggedInUser}=useContext(UserContext);
   
-
-    const cartItems = useSelector((store) => store.cart.items);
-  
+    //subscribing to store
+    const cartItems = useSelector((store) => {return (store.cart.items)});
+    
 
     return(
          
@@ -28,7 +28,7 @@ const Header=()=>{
                     <li className="px-4"><Link to={"/"} style={{ color: 'black',textDecoration: 'none'}}>Home</Link></li>
                     <li className="px-4"><Link to={"/about"} style={{ color: 'black',textDecoration: 'none'}}>About Us</Link></li>
                     <li className="px-4"><Link to={"/contact"} style={{ color: 'black',textDecoration: 'none'}}>Contact Us</Link></li>
-                    <li className="px-4">Cart({cartItems.length})</li>
+                    <li className="px-4"><Link to={"/cart"}>Cart({cartItems.length})</Link></li>
                     <li>
                     <button className="newbtn" onClick={()=>{
                         login==="login"?
