@@ -11,6 +11,7 @@ import UserContext from "./utils/UserContext";
 import {Provider} from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const AppLayout=()=>{
     //authentication code(aise hi)
@@ -23,7 +24,13 @@ const AppLayout=()=>{
       setusername(data.name)
     },[])
 
-    return(
+    return(<Auth0Provider
+      domain="dev-jrsy3gca5i5plmel.us.auth0.com"
+      clientId="FVIOZEZX41RLVMhbyKxXFzxbOp5uazxk"
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
+    >
       <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser:username,setusername}}>
           <div className="App">
@@ -32,6 +39,7 @@ const AppLayout=()=>{
         </div>
       </UserContext.Provider>
       </Provider>
+      </Auth0Provider>
       
     )
 }

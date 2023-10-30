@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 const Header=()=>{
 
     const [login,setlogin]=useState("login");
@@ -10,6 +11,7 @@ const Header=()=>{
   
     //subscribing to store
     const cartItems = useSelector((store) => {return (store.cart.items)});
+    const { loginWithRedirect,isAuthenticated,logout,user } = useAuth0();
     
 
     return(
@@ -29,17 +31,40 @@ const Header=()=>{
                     <li className="px-4"><Link to={"/about"} style={{ color: 'black',textDecoration: 'none'}}>About Us</Link></li>
                     <li className="px-4"><Link to={"/contact"} style={{ color: 'black',textDecoration: 'none'}}>Contact Us</Link></li>
                     <li className="px-4"><Link to={"/cart"}>Cart({cartItems.length})</Link></li>
-                    <li>
-                    <button className="newbtn" onClick={()=>{
+                    
+                    {/* <button className="newbtn" onClick={()=>{
                         login==="login"?
                         setlogin("logout"):
                         setlogin("login");
                     }} >
                          {login}
                       
-                    </button>
+                    </button> */}
+                    <li>
+                        {
+                            isAuthenticated && <p>{user.name}</p>
+                        }
                     </li>
-                    <li className="px-4">{loggedInUser}</li>
+
+                    {
+                        isAuthenticated ? (
+                            <li className="px-4" >
+                            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                            Log Out
+                            </button>
+                            </li>
+
+                        ):(
+
+                         <li  className="px-4">
+                            <button onClick={() => loginWithRedirect()}>Log in </button>
+                        </li>
+                        )
+                    }
+
+                    
+                   
+                    
                 </ul>
             </div>
         </div>
