@@ -23,7 +23,7 @@ module.exports = {
 
       },
       fontFamily:{
-
+                'App': "PT-Sans, Calibri, sans-serif"
       },
     },
   },

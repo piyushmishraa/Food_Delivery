@@ -10,30 +10,57 @@ const RestaurantCard=(props)=>{
 
   
 
-         <div className="card">
+         // <div className="card">
                 
 
-              <div style={{height:"230px"}}>
+         //      <div style={{height:"230px"}}>
                 
-              <img  src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
-               </div>  
+         //      <img  src={CDN_IMG_URL + cloudinaryImageId} alt="Salad" />
+         //       </div>  
                
                
-               <h3 className="font-bold">{name}</h3>
-               <h5>{cuisines.join(", ")}</h5>
-               <h5>{areaName}</h5>
-            <span className=" flex">
-              <h4>
-              <i className="fa-solid fa-star"></i>
-                 ⭐  { avgRatingString}
-               </h4>
-              <h4>•</h4>
-               <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>
-               <h4>•</h4>
-               <h4>{costForTwo ?? '₹200 for two'}</h4>
-            </span>
-            </div> 
+         //       <h3 className="font-bold">{name}</h3>
+         //       <h5>{cuisines.join(", ")}</h5>
+         //       <h5>{areaName}</h5>
+         //    <span className=" flex">
+         //      <h4>
+         //      <i className="fa-solid fa-star"></i>
+         //         ⭐  { avgRatingString}
+         //       </h4>
+         //      <h4>•</h4>
+         //       <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>
+         //       <h4>•</h4>
+         //       <h4>{costForTwo ?? '₹200 for two'}</h4>
+         //    </span>
+         //    </div> 
             
+
+            //
+
+            <div className="card">
+             <div className="hmm"><img src={ CDN_IMG_URL+ cloudinaryImageId}  style={{height:"200px",width:"300px"}}/></div>
+            <h3>{name}</h3>
+            <h5>{cuisines.join(", ")}</h5>
+            <h5>{areaName}</h5>
+            <span>
+              <h4
+                style={
+                  avgRatingString < 4
+                    ? { backgroundColor: "var(--light-red)" }
+                    : avgRatingString === "--"
+                      ? { backgroundColor: "white", color: "black" }
+                      : { color: "white" }
+                }
+              >
+                <i className="fa-solid fa-star"></i>
+                {avgRatingString}
+              </h4>
+              <h4>•</h4>
+              <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>
+              <h4>•</h4>
+              <h4>{costForTwo ?? '₹200 for two'}</h4>
+            </span>
+          </div>
       
        
         

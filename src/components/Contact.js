@@ -1,39 +1,30 @@
-const ContactUs = () => {
-	return (
-		<div className="container">
-			<div className="row justify-content-center">
-				<div className="text-center my-4">
-					<h1 className="heading">Contact Us</h1>
-					<p>Write your query, we shall get back to you soon.</p>
-				</div>
-				<div className="col-6">
-					<div className="card p-5 mb-5">
-						<form className="needs-validation" noValidate>
-							<div className="form-row">
-								<div className="col-12 mb-3">
-									<label>Name</label>
-									<input type="text" className="form-control" placeholder="Enter Name" />
-								</div>
-								<div className="col-12 mb-3">
-									<label>Email</label>
-									<input type="text" className="form-control" placeholder="Enter Name" />
-								</div>
-								<div className="col-12 mb-3">
-									<label>Your Message</label>
-									<textarea className="form-control" placeholder="Enter Your Message" />
-								</div>
-							</div>
-							<div className="d-flex justify-content-end">
-								<button className="btn btn-primary" type="submit">Submit form</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+import { useState } from "react";
+import contactus from "../Images/contactus.png"
 
-	)
-}
+const Contact = () => {
+  const [message, setMessage] = useState(false);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setMessage(true);
+    }
+  return (
+    <div className="contact-container">
+      <div className="contact-left">
+      <img src={contactus} alt="Contact us" />
+      </div>
+      <div className="contact-right">
+      <h1>Contact us</h1>
+                <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Name" required/>
+                    <input type="email" placeholder="Email" required/>
+                    <textarea placeholder="Type your Message here..." required></textarea>
+                    <button type="submit">Submit</button>
+                    {message && <span>Thanks for contacting FoodFire, We will reply ASAP.</span>}
+                </form>
+      </div>
+    </div>
+  );
+};
 
-export default ContactUs;
+export default Contact;
 

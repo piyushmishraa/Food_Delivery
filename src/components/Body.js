@@ -17,7 +17,7 @@ const Body=()=>{
     },[])
 
     const fetchdata=async()=>{
-        const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json=await data.json();
 
@@ -60,7 +60,7 @@ const Body=()=>{
              type="text"
               value={searchlist} 
               onChange={(e)=>setsearchlist(e.target.value)}
-              className="border border-solid border-black ml-96 mt-12 rounded-md w-72  " placeholder="search Restaurants" />
+              className="border border-solid border-black ml-96 mt-12 rounded-md w-72  " placeholder=" Search Restaurants" />
             <button  className="ml-4 text-white bg-customeOrange-500 hover:bg-customeOrange-500/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 mr-2 mb-2"onClick={()=>{
                 const newlist=listofrestaurant.filter(
                     (res)=>res.info.name.includes(searchlist)
@@ -71,7 +71,7 @@ const Body=()=>{
                 search
             </button>
             </div>
-              <button className="ml-[500] mb-12  text-white bg-customeGreen-400 hover:bg-customeGreen-400/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-customeGreen2-600/80 dark:focus:ring-[#FF9119]/40 " onClick={()=>{  
+              <button className="ml-[500] mb-12  text-white bg-customeGreen3-700 hover:bg-customeGreen3-700/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-customeGreen2-600/80 dark:focus:ring-[#FF9119]/40 " onClick={()=>{  
                 const filteredlist=listofrestaurant.filter(
                     (res)=>res.info.avgRating>4.5
                 );
