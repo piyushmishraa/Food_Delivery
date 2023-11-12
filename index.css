@@ -548,7 +548,7 @@ a {
 }
 
 .about-container .about-left h1 span {
-  background-color: var(--orange);
+
   padding: 0 10px;
   border-radius: 15px;
   color: var(--light-white-text);

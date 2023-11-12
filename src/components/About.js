@@ -8,6 +8,9 @@ import github from "../Images/github.png"
 import discord from "../Images/discord.png"
 import reddit from "../Images/reddit.png"
 import { Link } from "react-router-dom";
+import lo from  "../Images/lo.jpg"
+
+import newburger from "../Images/newburger.png"
 
 // className About extends React.Component{
 
@@ -118,19 +121,16 @@ const About=()=>{
 
         </div>
       
-           <div className="about-container">
+           <div className="about-container font-style: italic ">
              <div className="about-left">
               <h1>
-               Welcome to <br /> The world of <br />
-               <span>Tasty & Fresh Food</span>
+               Speedy Delivery <br /> Bursting With <br/>Flavours <br />
+               <span className="bg-customeOrange-500">Fill in yourself</span>
               </h1>
-              <h4>
-               "Better you will feel if you eat a Food<span>Fire</span> healthy
-                meal"
-              </h4>
+              
            </div>
            <div className="about-right">
-             <img  className="h2" src={newburger2} alt="Food Image" />
+             <img  className="h10" src={newburger2} alt="Food Image" />
            </div>
            </div>
       </div>

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698825127989" clover="3.2.0">
-  <project timestamp="1698825127990" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="3" coveredelements="3" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
+<coverage generated="1699781705663" clover="3.2.0">
+  <project timestamp="1699781705664" name="All files">
+    <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2" elements="13" coveredelements="9" complexity="0" loc="8" ncloc="8" packages="1" files="2" classes="2"/>
+    <file name="Contact.js" path="E:\webdev\namasteReact\src\components\Contact.js">
+      <metrics statements="6" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+    </file>
     <file name="sum.js" path="E:\webdev\namasteReact\src\components\sum.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
