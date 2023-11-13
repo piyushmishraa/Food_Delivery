@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <div className="contact-left">
-      <img src={require("../Images/contactus.png")} alt="Contact us" />
+      <img src="https://i.ibb.co/mcL6ncQ/Contact-Us.png" alt="Contact us" />
       </div>
       <div className="contact-right">
       <h1>Contact us</h1>
