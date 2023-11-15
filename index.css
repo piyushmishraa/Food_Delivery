@@ -651,3 +651,13 @@ a {
   background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
   background-size: 1000px 100%;
 }
+.gg:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em #6ac024;
+}
+
+
+.gg:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em #6ac024;
+}
